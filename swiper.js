@@ -81,9 +81,19 @@ const initSwiperTooltips = () => {
 
     // Handle click or touch events
     slide.addEventListener("doubleclick", () => handleSlideClick(slide, index));
-    slide.addEventListener("doubletouchstart", () =>
-      handleSlideClick(slide, index)
-    );
+    let lastTouchTime = 0;
+
+    slide.addEventListener("touchstart", (event) => {
+      const currentTime = new Date().getTime();
+      const timeDifference = currentTime - lastTouchTime;
+
+      // Detect double tap (threshold is 300ms, you can adjust this)
+      if (timeDifference < 300 && timeDifference > 0) {
+        handleSlideClick(slide, index);
+      }
+
+      lastTouchTime = currentTime;
+    });
   });
 };
 
