@@ -25,16 +25,15 @@ function handleScreenChange(e) {
     //   debug: true,
     //   gooey: true,
     });
-    Shery.imageMasker(".mask-target" /* Element to target.*/, {
-      //Parameters are optional.
+    Shery.imageMasker(".mask-target" , {
+
       mouseFollower: true,
       text: "Your_Brain",
       ease: "cubic-bezier(0.23, 1, 0.320, 1)",
       duration: 1,
     });
-    Shery.hoverWithMediaCircle(".hover-target" /* Element to target.*/, {
-      images: ["./assets/img_mine.jpg"] /*OR*/,
-      //videos: ["video1.mp4", "video2.mp4"],
+    Shery.hoverWithMediaCircle(".hover-target", {
+      images: ["./assets/img_mine.jpg"] ,
     });
   }
 }

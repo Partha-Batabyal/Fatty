@@ -21,27 +21,33 @@ swiperContainer.addEventListener("mouseenter", () => swiper.autoplay.stop());
 swiperContainer.addEventListener("mouseleave", () => swiper.autoplay.start());
 
 // Adjust layout on window resize
-window.addEventListener("resize", () => {
-  const isMobile = window.innerWidth <= 700;
+// Function to update the border styles based on the screen width
+function updateProjectBorder() {
+  const isMobile = window.innerWidth < 700;
   let Border = document.querySelector(".project_all");
-
-  // Change swiper direction and number of slides based on viewport size
-  swiper.changeDirection(isMobile ? "vertical" : "horizontal");
-  swiper.params.slidesPerView = isMobile ? 1 : 3;
-  swiper.update();
 
   // Update project border styles
   if (Border) {
-    Border.style.border = isMobile
-      ? "none"
-      : `4px solid var(--project_all_border_color)`;
-    Border.style.borderTop = isMobile
-      ? `4px solid var(--project_all_border_color)`
-      : "none";
-    Border.style.borderBottom = isMobile
-      ? `4px solid var(--project_all_border_color)`
-      : "none";
+    if (isMobile) {
+      Border.style.border = "none";
+      Border.style.borderTop = `4px solid var(--project_all_border_color)`;
+      Border.style.borderBottom = `4px solid var(--project_all_border_color)`;
+    } else {
+      Border.style.border = `4px solid var(--project_all_border_color)`;
+      Border.style.borderTop = "none";
+      Border.style.borderBottom = "none";
+    }
   }
+}
+
+// Add event listener for DOMContentLoaded
+window.addEventListener("DOMContentLoaded", () => {
+  updateProjectBorder(); // Call when the DOM is loaded
+});
+
+// Add event listener for window resize
+window.addEventListener("resize", () => {
+  updateProjectBorder(); // Call when the window is resized
 });
 
 // Tooltip and slide click handling
@@ -74,8 +80,10 @@ const initSwiperTooltips = () => {
     slide.setAttribute("data-tooltip", tooltips[index]);
 
     // Handle click or touch events
-    slide.addEventListener("click", () => handleSlideClick(slide, index));
-    slide.addEventListener("touchstart", () => handleSlideClick(slide, index));
+    slide.addEventListener("doubleclick", () => handleSlideClick(slide, index));
+    slide.addEventListener("doubletouchstart", () =>
+      handleSlideClick(slide, index)
+    );
   });
 };
 
