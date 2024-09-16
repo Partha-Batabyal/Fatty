@@ -25,6 +25,9 @@ body {
   transition: background-color 0.5s ease-in-out;
 }
 :root {
+  /* selection color */
+  --selection_text_color: rgb(255, 15, 87);
+  --selection_bg_color: #333;
   /* about_me_color */
   --shadow_color_about_me: rgba(255, 251, 251, 0.4);
   --highlight_color: tomato;
@@ -50,6 +53,7 @@ body {
   --form_bg_color: #54752c;
   --form_bg_color2: #15687d;
   --form_color: #cdcdcd;
+  --big_form_icon_boder_color: #999;
   /**** border_color_project */
   --project_all_border_color: #61892f;
   /* ***input */
@@ -79,6 +83,9 @@ body {
   --hover_active_background_color: #eee;
 }
 .mycolor {
+  /* selection color */
+  --selection_text_color: rgb(131, 201, 255);
+  --selection_bg_color: #888;
   /* about_me_color */
   --shadow_color_about_me: #121;
   --highlight_color: rgb(191, 71, 255);
@@ -103,6 +110,8 @@ body {
   --form_bg_color: #041a4d;
   --form_color: #ffffff;
   --form_bg_color2: #1b749d;
+  --big_form_icon_boder_color: #ccc;
+
   /**** border_color_project */
   --project_all_border_color: #041a4d;
   /* ***input */
@@ -131,6 +140,10 @@ body {
   --hover_active_background_color: #041a4d;
   --hover_active_text_color: #eee;
   transition: all 0.5s ease-in-out;
+}
+::selection {
+  color: var(--selection_text_color);
+  background-color: var(--selection_bg_color);
 }
 .wrapper_main_body {
   width: 100%;
@@ -369,7 +382,7 @@ body {
   line-height: 1.8;
   margin: 10px 0;
   text-align: justify;
-  mix-blend-mode:color-burn;
+  mix-blend-mode: color-burn;
 }
 
 #nav_About .about_nav_con p:nth-child(1) {
@@ -627,6 +640,7 @@ body {
   color: var(--highlight_color);
 }
 .text_sec_home_box .cv_btn {
+  /* background-color: red; */
   width: 90%;
   display: flex;
   align-items: center;

@@ -1,93 +1,89 @@
 /* From Uiverse.io by G4b413l */
 .buttonDownload {
- display: inline-block;
- position: relative;
- padding: 10px 25px;
- background-color: var(--btn_color);
- color: white;
- font-family: sans-serif;
- text-decoration: none;
- font-size: 0.9em;
- text-align: center;
- text-indent: 15px;
- border: none;
+  display: inline-block;
+  position: relative;
+  padding: 10px 25px;
+  background-color: var(--btn_color);
+  color: white;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 0.9em;
+  text-align: center;
+  text-indent: 15px;
+  border: none;
   border-radius: 9999px;
-
-
 }
 
 .buttonDownload:hover {
   transform: scale(1.05);
- background-color: var(--hover_btn_page);
- color: white;
+  background-color: var(--hover_btn_page);
+  color: white;
 }
 
-.buttonDownload:before, .buttonDownload:after {
- content: ' ';
- display: block;
- position: absolute;
- left: 15px;
- top: 52%;
+.buttonDownload:before,
+.buttonDownload:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 15px;
+  top: 52%;
 }
 
 .buttonDownload:before {
- width: 10px;
- height: 2px;
- border-style: solid;
- border-width: 0 2px 2px;
+  width: 10px;
+  height: 2px;
+  border-style: solid;
+  border-width: 0 2px 2px;
 }
 
 .buttonDownload:after {
- width: 0;
- height: 0;
- margin-left: 3px;
- margin-top: -7px;
- border-style: solid;
- border-width: 4px 4px 0 4px;
- border-color: transparent;
- border-top-color: inherit;
- animation: downloadArrow 1s linear infinite;
- animation-play-state: paused;
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  margin-top: -7px;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: transparent;
+  border-top-color: inherit;
+  animation: downloadArrow 1s linear infinite;
+  animation-play-state: paused;
 }
 
 .buttonDownload:hover:before {
- border-color: var(--animation_cv_btn);
+  border-color: var(--animation_cv_btn);
 }
 
 .buttonDownload:hover:after {
- border-top-color:var(--animation_cv_btn);
- animation-play-state: running;
+  border-top-color: var(--animation_cv_btn);
+  animation-play-state: running;
 }
 
 @keyframes downloadArrow {
- 0% {
-  margin-top: -7px;
-  opacity: 1;
- }
+  0% {
+    margin-top: -7px;
+    opacity: 1;
+  }
 
- 0.001% {
-  margin-top: -15px;
-  opacity: 0.4;
- }
+  0.001% {
+    margin-top: -15px;
+    opacity: 0.4;
+  }
 
- 50% {
-  opacity: 1;
- }
+  50% {
+    opacity: 1;
+  }
 
- 100% {
-  margin-top: 0;
-  opacity: 0.4;
- }
+  100% {
+    margin-top: 0;
+    opacity: 0.4;
+  }
 }
 /* btn2 */
 /* From Uiverse.io by adeladel522 */
 .button {
   position: relative;
-  transition: all 0.3s ease-in-out;
-  /* box-shadow: 0px 0px 10px rgba(250, 208, 208, 0.5); */
+
   padding: 7px 17px;
-
-
 
   background-color: var(--btn_color);
   border-radius: 9999px;
@@ -112,7 +108,7 @@
 }
 
 .button:hover {
- background-color: var(--hover_btn_page);
+  background-color: var(--hover_btn_page);
 
   transform: scale(1.05);
   /* border-color: #fff9; */
@@ -157,5 +153,5 @@
 }
 
 .cv_btn a {
-    text-decoration: none;
+  text-decoration: none;
 }

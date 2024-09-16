@@ -8,6 +8,9 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     loader.style.display = "none";
     main.style.display = "block";
-
   }, 4000);
+  // if(loader.style.display!="none"){
+
+  //   song();
+  // }
 });

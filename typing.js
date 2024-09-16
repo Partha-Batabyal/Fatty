@@ -60,7 +60,14 @@ document.querySelector(".typing_left").addEventListener("click", (event) => {
   }
 });
 
-about_me = ["Your_Brain","Software_engineer","Web_developer","Web_designer","Freelancer","Programmer"];
+about_me = [
+  "Your_Brain",
+  "Software_engineer",
+  "Web_developer",
+  "Web_designer",
+  "Freelancer",
+  "Programmer",
+];
 let homeTyped = () => {
   typedhome = new Typed(".about_me_home", {
     strings: [...about_me],
@@ -71,6 +78,6 @@ let homeTyped = () => {
     smartBackspace: true,
     showCursor: false,
   });
-}
+};
 
 homeTyped();

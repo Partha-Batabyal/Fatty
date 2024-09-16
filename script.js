@@ -23,13 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
       typed.reset();
       typed.stop();
       homeBtn_Box_size.style.width = "50%";
-
     } else {
       // * Change theme to alternative
       document.body.classList.remove("Default-Theme");
       document.body.classList.add("Alternative-Theme");
       typed1();
-
 
       if (screen.width < 700) {
         homeBtn_Box_size.style.width = "90%";

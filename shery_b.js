@@ -21,19 +21,17 @@ function handleScreenChange(e) {
     Shery.imageEffect(".img>img", {
       style: 2,
 
-
-    //   debug: true,
-    //   gooey: true,
+      //   debug: true,
+      //   gooey: true,
     });
-    Shery.imageMasker(".mask-target" , {
-
+    Shery.imageMasker(".mask-target", {
       mouseFollower: true,
       text: "Your_Brain",
       ease: "cubic-bezier(0.23, 1, 0.320, 1)",
       duration: 1,
     });
     Shery.hoverWithMediaCircle(".hover-target", {
-      images: ["./assets/img_mine.jpg"] ,
+      images: ["./assets/img_mine.jpg"],
     });
   }
 }

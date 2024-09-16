@@ -1,7 +1,7 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 let audio1 = new Audio("login_dj.ogg");
-
+audio1.preload = "auto";
 function song() {
   audio1.play().catch((error) => {
     console.error("Failed to play audio:", error);
@@ -11,9 +11,7 @@ function song() {
     audio1.currentTime = 0;
   }, 4000);
 }
-window.addEventListener("documentLoaded", song);
-
-
+// window.addEventListener("", song);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -48,6 +46,12 @@ let song2 = () => {
 };
 let left_a_click = document.querySelectorAll(".left_a");
 left_a_click.forEach((item) => {
+  item.addEventListener("click", () => {
+    song2();
+  });
+});
+let foot_d = document.querySelectorAll(".back-to-top");
+foot_d.forEach((item) => {
   item.addEventListener("click", () => {
     song2();
   });

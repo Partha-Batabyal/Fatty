@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/fab-icon.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./assets/fab-icon.png"
+      type="image/x-icon"
+    />
     <title>_F a t t y_</title>
     <!-- Home Button Styles -->
     <link rel="stylesheet" href="Homebtn.css" />
@@ -110,11 +114,11 @@
                   <label class="toggle" for="switch">
                     <input id="switch" class="input" type="checkbox" />
                     <div class="ms_icon icon--moon">
-                      <i class="ri-moon-fill"></i>
+                      <i class="ri-moon-fill big_r"></i>
                     </div>
 
                     <div class="ms_icon icon--sun">
-                      <i class="ri-sun-fill"></i>
+                      <i class="ri-sun-fill big_r"></i>
                     </div>
                   </label>
                 </div>
@@ -160,7 +164,7 @@
                           <svg
                             fill="currentColor"
                             viewBox="0 0 24 24"
-                            class="icon big_r"
+                            class="icon"
                           >
                             <path
                               clip-rule="evenodd"
@@ -182,31 +186,14 @@
             </section>
             <section class="sec sec2">
               <div class="page" id="nav_About">
-                <div class="about_nav_con big_r ">
-                  <p class="big_r">About Me</p>
-                  <p>
-                    Hello! I'm <span class="name_size hover-target">Partha Batabyal</span> .
-                  </p>
-                  <p>
-                    I completed my 10th and 12th grades from Khukurdaha IC MM
-                    High School. Currently, I am pursuing a B.Tech in Computer
-                    Science and Engineering with a focus on AI/ML at Brainware
-                    University in Barasat, where I am in my 5th semester. I have
-                    a strong passion for coding and technology, which has driven
-                    me to learn and work with a variety of programming languages
-                    including
-                    <span>HTML, CSS, JavaScript, Java, Python, C, and C++</span
-                    >.
-                  </p>
-                  <p>
-                    I'm excited about applying my skills to real-world problems
-                    and continuously exploring new advancements in the field of
-                    computer science.
-                  </p>
-                  <p>
-                    Feel free to connect with me if you share similar interests
-                    or if you'd like to discuss potential opportunities!
-                  </p>
+                <div class="about_nav_con big_r">
+                  <p class="big_r" id="about_title"></p>
+                  <p id="about_intro" class="hover-target"></p>
+
+                  <p id="about_education"></p>
+                  <p id="about_passion"></p>
+                  <p id="about_future"></p>
+                  <p id="about_contact"></p>
                 </div>
               </div>
             </section>
@@ -220,12 +207,16 @@
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
                         <a
-                          ><img src="./assets/fatty_askLove.png" alt="_fatty_img"
+                          ><img
+                            src="./assets/fatty_askLove.png"
+                            alt="_fatty_img"
                         /></a>
                       </div>
                       <div class="swiper-slide">
                         <a
-                          ><img src="./assets/fatty_canvas.png" alt="_fatty_img"
+                          ><img
+                            src="./assets/fatty_canvas.png"
+                            alt="_fatty_img"
                         /></a>
                       </div>
                       <div class="swiper-slide">
@@ -245,7 +236,9 @@
                       </div>
                       <div class="swiper-slide">
                         <a
-                          ><img src="./assets/fatty_weather.png" alt="_fatty_img"
+                          ><img
+                            src="./assets/fatty_weather.png"
+                            alt="_fatty_img"
                         /></a>
                       </div>
                       <div class="swiper-slide">
@@ -323,8 +316,16 @@
                     </div>
 
                     <div class="form-container sign-up display">
-                      <form>
-                        <h1>Create Account</h1>
+                      <form
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                      >
+                        <input
+                          type="hidden"
+                          name="access_key"
+                          value="9d9c2978-e2ea-433c-b631-5b0b09e0860c"
+                        />
+                        <h1>Connect Us</h1>
                         <div class="social-icons">
                           <a
                             href="mailto:parthabatabyal30032004@gmail.com"
@@ -348,20 +349,46 @@
                           ></a>
                         </div>
                         <div class="inputsign">
-                          <span>or use your email for registeration</span>
-                          <input type="text" placeholder="Name" />
-                          <input type="email" placeholder="Email" />
-                          <input type="password" placeholder="Password" />
+                          <span>Please use your real email</span>
+                          <input
+                            type="text"
+                            placeholder="Name"
+                            name="user_name"
+                            required
+                            autocomplete="off"
+                          />
+                          <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            required
+                            autocomplete="off"
+                          />
+                          <input
+                            type="text"
+                            placeholder="Message"
+                            name="message"
+                            required
+                            autocomplete="off"
+                          />
                         </div>
                         <div class="btnwraUp">
-                          <button class="big_r">Sign Up</button>
+                          <button type="submit" class="big_r">Send Us</button>
                         </div>
                       </form>
                     </div>
 
                     <div class="form-container sign-in display">
-                      <form>
-                        <h1>Sign In</h1>
+                      <form
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                      >
+                        <input
+                          type="hidden"
+                          name="access_key"
+                          value="9d9c2978-e2ea-433c-b631-5b0b09e0860c"
+                        />
+                        <h1>Bug Report</h1>
                         <div class="social-icons">
                           <a
                             href="mailto:parthabatabyal30032004@gmail.com"
@@ -385,14 +412,28 @@
                           ></a>
                         </div>
                         <div class="inputsign">
-                          <span>or use your email password</span>
+                          <span>Please use your real email</span>
 
-                          <input type="email" placeholder="Email" />
-                          <input type="password" placeholder="Password" />
+                          <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            required
+                            autocomplete="off"
+                          />
+                          <input
+                            type="text"
+                            placeholder="Bug description"
+                            name="message"
+                            required
+                            autocomplete="off"
+                          />
                         </div>
                         <div class="btnwra">
-                          <a href="#">Forget Your Password?</a>
-                          <button class="big_r">Sign In</button>
+                          <!-- <a href="#">Forget Your Password?</a> -->
+                          <button type="submit" class="big_r">
+                            Send Report
+                          </button>
                         </div>
                       </form>
                     </div>
@@ -400,23 +441,17 @@
                     <div class="toggle-container display">
                       <div class="toggle">
                         <div class="toggle-panel toggle-left">
-                          <h1>Welcome Back!</h1>
-                          <p>
-                            Enter your personal details to use all of site
-                            features
-                          </p>
+                          <h1>Bug!</h1>
+                          <p>if u found any bugs or problems</p>
                           <button class="hidden big_r" id="login">
-                            Sign In
+                            Bug Found
                           </button>
                         </div>
                         <div class="toggle-panel toggle-right">
                           <h1>Hello, Friend!</h1>
-                          <p>
-                            Register with your personal details to use all of
-                            site features
-                          </p>
+                          <p>connect with me if you share similar interests.</p>
                           <button class="hidden big_r" id="register">
-                            Sign Up
+                            connect us
                           </button>
                         </div>
                       </div>
@@ -567,5 +602,6 @@
     <script src="typing.js"></script>
     <script src="loader.js"></script>
     <script src="script.js"></script>
+    <script src="Data_Insert.js"></script>
   </body>
 </html>

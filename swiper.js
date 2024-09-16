@@ -1,117 +1,117 @@
-// Initialize Swiper
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: window.innerWidth <= 700 ? 1 : 3,
-  spaceBetween: 9,
-  direction: window.innerWidth <= 700 ? "vertical" : "horizontal",
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: true,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
+// Fetch content from content.json and initialize Swiper tooltips
+fetch("content.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const swiperData = data.swiper_data;
 
-// Get the Swiper container for autoplay controls
-var swiperContainer = document.querySelector(".mySwiper");
+    // Initialize Swiper with responsive settings
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: window.innerWidth <= 700 ? 1 : 3,
+      // direction: window.innerWidth <= 700 ? "vertical" : "horizontal",
+      speed: 1000,
+      spaceBetween: 9,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
 
-// Pause autoplay on mouseenter and resume on mouseleave
-swiperContainer.addEventListener("mouseenter", () => swiper.autoplay.stop());
-swiperContainer.addEventListener("mouseleave", () => swiper.autoplay.start());
+    // Pause autoplay on hover and resume on leave
+    const swiperContainer = document.querySelector(".mySwiper");
+    swiperContainer.addEventListener("mouseenter", () =>
+      swiper.autoplay.stop()
+    );
+    swiperContainer.addEventListener("mouseleave", () =>
+      swiper.autoplay.start()
+    );
 
-// Adjust layout on window resize
-// Function to update the border styles based on the screen width
-function updateProjectBorder() {
-  const isMobile = window.innerWidth < 700;
-  let Border = document.querySelector(".project_all");
+    // Initialize tooltips and click/double-tap events for Swiper slides
+    const initSwiperTooltips = () => {
+      const swiperSlides = document.querySelectorAll(".swiper-slide");
 
-  // Update project border styles
-  if (Border) {
-    if (isMobile) {
-      Border.style.border = "none";
-      Border.style.borderTop = `4px solid var(--project_all_border_color)`;
-      Border.style.borderBottom = `4px solid var(--project_all_border_color)`;
-    } else {
-      Border.style.border = `4px solid var(--project_all_border_color)`;
-      Border.style.borderTop = "none";
-      Border.style.borderBottom = "none";
-    }
-  }
-}
+      swiperSlides.forEach((slide, index) => {
+        if (swiperData[index]) {
+          const { tooltip, url } = swiperData[index];
+          slide.setAttribute("data-tooltip", tooltip);
 
-// Add event listener for DOMContentLoaded
-window.addEventListener("DOMContentLoaded", () => {
-  updateProjectBorder(); // Call when the DOM is loaded
-});
+          // Handle double-click for desktop
+          slide.addEventListener("dblclick", () =>
+            handleSlideClick(slide, url, tooltip)
+          );
 
-// Add event listener for window resize
-window.addEventListener("resize", () => {
-  updateProjectBorder(); // Call when the window is resized
-});
+          // Handle double-tap for mobile
+          let lastTouchTime = 0;
+          slide.addEventListener("touchstart", (event) => {
+            const currentTime = new Date().getTime();
+            const timeDifference = currentTime - lastTouchTime;
 
-// Tooltip and slide click handling
-const tooltips = [
-  "asking love",
-  "canvas",
-  "clock",
-  "image",
-  "QR code",
-  "weather",
-  "my info",
-  "mess data",
-];
-const links = [
-  "https://your-brain.github.io/LoverBabu/",
-  "https://partha-batabyal.github.io/canvas__op/",
-  "https://partha-batabyal.github.io/clockNoob/",
-  "https://partha-batabyal.github.io/FattyImgFinder/",
-  "https://your-brain.github.io/banaloQr/",
-  "https://partha-batabyal.github.io/FattyWeather/",
-  "https://your-brain.github.io/aboutPartha/",
-  "https://partha-batabyal.github.io/messData/",
-];
+            // Detect double tap (threshold is 300ms)
+            if (timeDifference < 300 && timeDifference > 0) {
+              handleSlideClick(slide, url, tooltip);
+            }
+            lastTouchTime = currentTime;
+          });
+        }
+      });
+    };
 
-// Initialize tooltips and click events for Swiper slides
-const initSwiperTooltips = () => {
-  const swiperSlides = document.querySelectorAll(".swiper-slide");
+    // Function to handle click/touch event on a slide
+    const handleSlideClick = (slide, url, tooltip) => {
+      // Prevent repeated clicks by checking if the slide is already disabled
+      if (slide.classList.contains("disabled")) return;
 
-  swiperSlides.forEach((slide, index) => {
-    slide.setAttribute("data-tooltip", tooltips[index]);
+      // Disable interaction and remove tooltip
+      slide.classList.add("disabled");
+      slide.removeAttribute("data-tooltip");
 
-    // Handle click or touch events
-    slide.addEventListener("doubleclick", () => handleSlideClick(slide, index));
-    let lastTouchTime = 0;
-
-    slide.addEventListener("touchstart", (event) => {
-      const currentTime = new Date().getTime();
-      const timeDifference = currentTime - lastTouchTime;
-
-      // Detect double tap (threshold is 300ms, you can adjust this)
-      if (timeDifference < 300 && timeDifference > 0) {
-        handleSlideClick(slide, index);
+      // Display loader if not already present
+      if (!slide.querySelector(".loaderSwiper")) {
+        const loader = document.createElement("div");
+        loader.classList.add("loaderSwiper", "loader");
+        slide.appendChild(loader);
       }
 
-      lastTouchTime = currentTime;
-    });
-  });
+      // Open link after a 2-second delay and re-enable interaction
+      setTimeout(() => {
+        const loader = slide.querySelector(".loaderSwiper");
+        if (loader) loader.remove();
+
+        // Open the URL in a new tab
+        window.open(url, "_blank");
+
+        // Re-enable interaction and restore tooltip
+        slide.classList.remove("disabled");
+        slide.setAttribute("data-tooltip", tooltip);
+      }, 2000);
+    };
+
+    // Initialize tooltips and event handlers
+    initSwiperTooltips();
+  })
+  .catch((error) => console.error("Error loading content:", error));
+
+// Function to update project borders based on screen size
+const updateProjectBorder = () => {
+  const isMobile = window.innerWidth < 700;
+  const borderElement = document.querySelector(".project_all");
+
+  if (borderElement) {
+    if (isMobile) {
+      borderElement.style.border = "none";
+      borderElement.style.borderTop = `4px solid var(--project_all_border_color)`;
+      borderElement.style.borderBottom = `4px solid var(--project_all_border_color)`;
+    } else {
+      borderElement.style.border = `4px solid var(--project_all_border_color)`;
+      borderElement.style.borderTop = "none";
+      borderElement.style.borderBottom = "none";
+    }
+  }
 };
 
-// Handle slide click/touch and open link after showing loader
-const handleSlideClick = (slide, index) => {
-  slide.removeAttribute("data-tooltip");
-
-  const loader = document.createElement("div");
-  loader.classList.add("loaderSwiper", "loader");
-  slide.appendChild(loader);
-
-  setTimeout(() => {
-    loader.remove();
-    window.open(links[index], "_blank");
-    slide.setAttribute("data-tooltip", tooltips[index]);
-  }, 2000);
-};
-
-// Initialize tooltips on page load and resize
-window.addEventListener("DOMContentLoaded", initSwiperTooltips);
-window.addEventListener("resize", initSwiperTooltips);
+// Update project border on load and resize
+window.addEventListener("DOMContentLoaded", updateProjectBorder);
+window.addEventListener("resize", updateProjectBorder);
