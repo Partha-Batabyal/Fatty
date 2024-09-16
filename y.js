@@ -19,9 +19,9 @@ const isKeyCombination = (
 // Event listener for keydown events
 document.addEventListener("keydown", (event) => {
   // Disable specific key combinations
-  if (isKeyCombination(event, "F12")) {
-    event.preventDefault();
-  }
+  // if (isKeyCombination(event, "F12")) {
+  //   event.preventDefault();
+  // }
 
   if (isKeyCombination(event, "I", true, true)) {
     event.preventDefault();
