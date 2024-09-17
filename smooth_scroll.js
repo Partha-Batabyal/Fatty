@@ -1,5 +1,5 @@
 const lenis = new Lenis({
-  duration: 7,
+  duration: 3,
 });
 
 // lenis.on("scroll", (e) => {
